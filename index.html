@@ -1,0 +1,1361 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071b36">
+  <meta name="description" content="Z.S Hospital, Najibabad. View hospital services, explore departments and submit an appointment enquiry online.">
+  <title>Z.S Hospital | Care With Confidence</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #071b36;
+      --navy2: #0d2b50;
+      --blue: #1769d2;
+      --sky: #eaf4ff;
+      --cyan: #64d5ed;
+      --white: #ffffff;
+      --ink: #15253b;
+      --muted: #64748b;
+      --line: #e2eaf3;
+      --bg: #f6f9fd;
+      --radius: 22px;
+      --shadow: 0 18px 50px rgba(7, 27, 54, .09);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Manrope", sans-serif;
+      line-height: 1.2;
+      letter-spacing: -.6px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    img { display: block; max-width: 100%; }
+
+    .container { width: min(1160px, 91%); margin: auto; }
+    .section { padding: 95px 0; }
+    .section-soft { background: var(--bg); }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--blue);
+      background: #edf5ff;
+      border: 1px solid #dcecff;
+      padding: 7px 13px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      margin: 17px 0 14px;
+      color: var(--navy);
+    }
+
+    .section-heading p { color: var(--muted); max-width: 570px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 20px;
+      font-weight: 800;
+      transition: transform .25s, background .25s, box-shadow .25s;
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    .btn-primary {
+      color: white;
+      background: var(--blue);
+      box-shadow: 0 8px 22px rgba(23, 105, 210, .24);
+    }
+
+    .btn-primary:hover { background: #0c56b6; }
+    .btn-outline { color: var(--navy); border: 1px solid var(--line); background: white; }
+    .btn-white { color: var(--navy); background: white; }
+    .btn-small { padding: 9px 13px; font-size: 13px; }
+
+    /* Top bar and navigation */
+    .topbar {
+      background: var(--navy);
+      color: #e4efff;
+      font-size: 12px;
+      padding: 9px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .topbar a { color: white; font-weight: 700; }
+
+    .navbar {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid #e8eef5;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 215px; }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--navy);
+      color: white;
+      font-size: 25px;
+      font-weight: 800;
+      box-shadow: 0 7px 18px #071b3622;
+    }
+
+    .brand-name { font: 800 18px "Manrope", sans-serif; color: var(--navy); }
+    .brand-sub { display: block; font-size: 10px; letter-spacing: 1.7px; color: var(--muted); font-weight: 700; }
+
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a { font-size: 13px; font-weight: 700; color: #41516a; transition: color .2s; }
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .menu-toggle { display: none; border: 0; background: var(--sky); color: var(--navy); border-radius: 10px; padding: 9px 12px; font-size: 21px; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 70px 0 55px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 20%, #d9ecff 0, transparent 29%),
+        linear-gradient(120deg, #f7fbff 0%, #edf5ff 50%, #ffffff 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border: 1px solid #cbdff5;
+      border-radius: 50%;
+      right: -140px;
+      top: -170px;
+      box-shadow: 0 0 0 35px #d9eaff55, 0 0 0 75px #d9eaff33;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      align-items: center;
+      gap: 45px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(38px, 5vw, 64px);
+      letter-spacing: -2.7px;
+      color: var(--navy);
+      margin: 22px 0;
+    }
+
+    .hero-copy h1 span { color: var(--blue); }
+
+    .hero-copy > p { color: #596b82; max-width: 530px; font-size: 16px; }
+
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 28px 0; }
+
+    .trust-row { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 27px; }
+    .trust-item { display: flex; align-items: center; gap: 9px; color: #53647b; font-size: 12px; font-weight: 700; }
+    .trust-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 11px; background: white; color: var(--blue); box-shadow: 0 5px 15px #0d2b500d; }
+
+    .hero-visual { position: relative; padding: 10px 10px 35px 0; }
+    .hero-image {
+      width: 100%;
+      height: 470px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 28px 28px 90px 28px;
+      box-shadow: 0 25px 65px #071b3626;
+      background: #d9e7f5;
+    }
+
+    .image-badge {
+      position: absolute;
+      left: -24px;
+      bottom: 68px;
+      background: white;
+      border: 1px solid #e5edf6;
+      box-shadow: var(--shadow);
+      border-radius: 18px;
+      padding: 17px 19px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 235px;
+    }
+
+    .image-badge-icon { width: 43px; height: 43px; border-radius: 14px; display: grid; place-items: center; color: white; background: var(--blue); font-size: 21px; }
+    .image-badge strong { display: block; font-size: 14px; color: var(--navy); }
+    .image-badge small { display: block; color: var(--muted); font-size: 11px; }
+
+    .hero-caption {
+      position: absolute;
+      top: 30px;
+      right: -10px;
+      background: var(--navy);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 13px;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    /* Quick access */
+    .quick-wrap { position: relative; margin-top: -2px; z-index: 3; }
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 40px #071b360b;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .quick-card { display: flex; align-items: center; gap: 14px; padding: 25px 22px; border-right: 1px solid var(--line); }
+    .quick-card:last-child { border-right: 0; }
+    .quick-icon { flex-shrink: 0; width: 46px; height: 46px; display: grid; place-items: center; background: var(--sky); color: var(--blue); border-radius: 14px; font-size: 22px; }
+    .quick-card h3 { font-size: 13px; color: var(--navy); margin-bottom: 4px; }
+    .quick-card p { font-size: 11px; color: var(--muted); }
+
+    /* Departments */
+    .center { text-align: center; }
+    .center.section-heading { margin-left: auto; margin-right: auto; }
+    .center.section-heading p { margin: auto; }
+
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .service-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      transition: .3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover { transform: translateY(-7px); border-color: #b6d4fa; box-shadow: var(--shadow); }
+    .service-icon { width: 55px; height: 55px; display: grid; place-items: center; border-radius: 17px; background: var(--sky); color: var(--blue); font-size: 26px; margin-bottom: 22px; }
+    .service-card h3 { font-size: 18px; margin-bottom: 10px; color: var(--navy); }
+    .service-card p { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+    .text-link { color: var(--blue); font-size: 13px; font-weight: 800; }
+    .text-link span { margin-left: 5px; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 65px; align-items: center; }
+    .about-image-wrap { position: relative; }
+    .about-image { width: 100%; height: 430px; object-fit: cover; border-radius: 25px; background: #dce8f5; }
+    .about-note { position: absolute; right: -18px; bottom: 25px; background: var(--navy); color: white; border-radius: 17px; padding: 20px; max-width: 210px; box-shadow: var(--shadow); }
+    .about-note strong { display: block; font-size: 18px; margin-bottom: 4px; }
+    .about-note small { font-size: 11px; color: #c6d8ee; }
+
+    .about-copy h2 { font-size: clamp(30px, 4vw, 44px); color: var(--navy); margin: 17px 0; }
+    .about-copy > p { color: var(--muted); font-size: 14px; }
+    .check-list { display: grid; gap: 14px; margin: 24px 0 30px; }
+    .check-item { display: flex; align-items: flex-start; gap: 11px; font-size: 13px; font-weight: 700; color: #34465d; }
+    .check { flex-shrink: 0; width: 23px; height: 23px; display: grid; place-items: center; background: #e6f7ef; color: #158653; border-radius: 50%; font-size: 12px; }
+
+    /* Doctors */
+    .doctor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .doctor-card { border: 1px solid var(--line); border-radius: 22px; background: white; overflow: hidden; transition: .3s; }
+    .doctor-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .doctor-photo { height: 235px; background: linear-gradient(135deg, #d9eaff, #f5f9ff); display: grid; place-items: center; overflow: hidden; }
+    .doctor-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .doctor-placeholder { text-align: center; color: #52739b; padding: 20px; }
+    .doctor-placeholder span { font-size: 44px; display: block; margin-bottom: 5px; }
+    .doctor-placeholder small { font-size: 11px; }
+    .doctor-info { padding: 22px; }
+    .doctor-info h3 { font-size: 18px; color: var(--navy); margin-bottom: 6px; }
+    .doctor-info p { color: var(--muted); font-size: 12px; margin-bottom: 17px; }
+    .doctor-tag { display: inline-block; color: var(--blue); background: var(--sky); border-radius: 8px; padding: 5px 9px; font-size: 10px; font-weight: 800; margin-bottom: 13px; }
+    .doctor-disclaimer { font-size: 12px; color: var(--muted); margin-top: 20px; }
+
+    /* Appointment */
+    .appointment-section { background: var(--navy); color: white; position: relative; overflow: hidden; }
+    .appointment-section::before { content: ""; position: absolute; width: 450px; height: 450px; border: 1px solid #ffffff15; border-radius: 50%; right: -120px; top: -210px; box-shadow: 0 0 0 50px #ffffff08, 0 0 0 100px #ffffff05; }
+    .appointment-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 55px; align-items: start; position: relative; }
+    .appointment-copy { padding-top: 20px; }
+    .appointment-copy .eyebrow { background: #ffffff10; border-color: #ffffff24; color: #9edcff; }
+    .appointment-copy .eyebrow::before { background: var(--cyan); }
+    .appointment-copy h2 { font-size: clamp(31px, 4vw, 47px); margin: 20px 0; }
+    .appointment-copy p { color: #c2d1e5; font-size: 14px; }
+    .appointment-points { display: grid; gap: 15px; margin-top: 28px; }
+    .appointment-point { display: flex; gap: 12px; align-items: center; color: #e4efff; font-size: 13px; }
+    .appointment-point span { display: grid; place-items: center; width: 35px; height: 35px; background: #ffffff12; border-radius: 11px; color: var(--cyan); }
+
+    .form-card { background: white; color: var(--ink); border-radius: 24px; padding: 32px; box-shadow: 0 20px 60px #0002; }
+    .form-card h3 { font-size: 24px; color: var(--navy); margin-bottom: 6px; }
+    .form-subtitle { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: 12px; font-weight: 800; color: #34465d; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      border: 1px solid #dce5ef;
+      border-radius: 11px;
+      padding: 12px 13px;
+      outline: none;
+      color: var(--ink);
+      background: #fbfdff;
+      transition: border .2s, box-shadow .2s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px #1769d218; }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .form-card .btn { width: 100%; margin-top: 18px; }
+    .privacy-note { font-size: 10px; color: var(--muted); margin-top: 12px; }
+    .notice { display: none; padding: 12px; border-radius: 10px; font-size: 12px; margin-top: 14px; }
+    .notice.show { display: block; background: #e8f8ef; color: #146c43; }
+
+    /* FAQ */
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .faq-item { border: 1px solid var(--line); border-radius: 15px; background: white; padding: 20px; }
+    .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 15px; font-size: 14px; font-weight: 800; color: var(--navy); }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; color: var(--blue); font-size: 20px; line-height: 1; }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item p { color: var(--muted); font-size: 12px; margin-top: 14px; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 30px; }
+    .contact-info { background: var(--navy); border-radius: 22px; color: white; padding: 32px; }
+    .contact-info h3 { font-size: 24px; margin-bottom: 12px; }
+    .contact-info > p { color: #c3d2e5; font-size: 13px; margin-bottom: 25px; }
+    .contact-line { display: flex; gap: 13px; padding: 17px 0; border-top: 1px solid #ffffff18; }
+    .contact-line > span { color: var(--cyan); font-size: 20px; }
+    .contact-line strong { display: block; font-size: 13px; margin-bottom: 4px; }
+    .contact-line p, .contact-line a { font-size: 12px; color: #c3d2e5; overflow-wrap: anywhere; }
+    .map-panel { border-radius: 22px; overflow: hidden; min-height: 400px; background: #eaf4ff; border: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 35px; }
+    .map-symbol { width: 70px; height: 70px; display: grid; place-items: center; background: white; color: var(--blue); font-size: 33px; border-radius: 22px; box-shadow: var(--shadow); margin-bottom: 20px; }
+    .map-panel h3 { font-size: 24px; color: var(--navy); margin-bottom: 10px; }
+    .map-panel p { color: var(--muted); font-size: 13px; margin-bottom: 22px; max-width: 350px; }
+
+    /* Footer */
+    footer { background: #041329; color: white; padding: 55px 0 20px; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr .8fr .8fr; gap: 45px; padding-bottom: 38px; }
+    footer .brand-name { color: white; }
+    footer .brand-sub { color: #9eb0c8; }
+    .footer-about p { color: #aebed3; font-size: 12px; margin-top: 18px; max-width: 340px; }
+    .footer-col h4 { font-size: 14px; margin-bottom: 18px; }
+    .footer-col a { display: block; color: #aebed3; font-size: 12px; margin: 10px 0; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; border-top: 1px solid #ffffff17; padding-top: 20px; color: #94a8c1; font-size: 11px; }
+    .footer-bottom strong { color: #dce8f6; }
+
+    /* Admin modal */
+    .modal-backdrop { display: none; position: fixed; inset: 0; z-index: 500; background: #06162bd9; backdrop-filter: blur(7px); padding: 20px; overflow-y: auto; align-items: center; justify-content: center; }
+    .modal-backdrop.open { display: flex; }
+    .modal { width: min(850px, 100%); background: white; border-radius: 22px; overflow: hidden; box-shadow: 0 30px 90px #0004; }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; gap: 15px; background: var(--navy); color: white; padding: 22px 26px; }
+    .modal-head h3 { font-size: 20px; }
+    .modal-close { border: 0; color: white; background: #ffffff1b; border-radius: 9px; padding: 5px 11px; font-size: 23px; }
+    .modal-body { padding: 26px; }
+    .admin-warning { background: #fff7df; border: 1px solid #f3df9d; color: #72541a; border-radius: 12px; padding: 13px; font-size: 12px; margin-bottom: 20px; }
+    .admin-login { max-width: 420px; margin: auto; }
+    .admin-login h4 { font-size: 23px; color: var(--navy); margin-bottom: 7px; }
+    .admin-login > p { font-size: 12px; color: var(--muted); margin-bottom: 22px; }
+    .admin-login .field { margin-bottom: 15px; }
+    .admin-error { display: none; color: #b42318; font-size: 12px; margin-top: 12px; }
+    .admin-error.show { display: block; }
+    .admin-dashboard { display: none; }
+    .admin-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 24px; }
+    .admin-stat { background: var(--bg); border: 1px solid var(--line); padding: 16px; border-radius: 13px; }
+    .admin-stat small { display: block; color: var(--muted); font-size: 11px; }
+    .admin-stat strong { display: block; font-size: 25px; color: var(--navy); }
+    .admin-table-wrap { overflow-x: auto; }
+    .admin-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 600px; }
+    .admin-table th, .admin-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .admin-table th { color: var(--navy); background: var(--bg); }
+    .admin-empty { color: var(--muted); font-size: 13px; padding: 20px 0; }
+    .admin-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .danger { color: #b42318; border: 1px solid #f0c9c6; background: #fff7f6; }
+    .demo-label { display: inline-block; background: #fff0c2; color: #765414; padding: 4px 8px; border-radius: 6px; font-size: 10px; font-weight: 800; margin-bottom: 12px; }
+
+    .whatsapp-float {
+      position: fixed; right: 20px; bottom: 20px; z-index: 90;
+      width: 56px; height: 56px; border-radius: 50%;
+      display: grid; place-items: center; color: white; background: #16a765;
+      font-size: 25px; box-shadow: 0 8px 25px #16a76555; transition: .2s;
+    }
+    .whatsapp-float:hover { transform: translateY(-4px) scale(1.04); }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 1000px) {
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: 12px; }
+      .brand { min-width: unset; }
+      .nav-actions .btn { display: none; }
+      .hero-grid { gap: 28px; }
+      .hero-image { height: 410px; }
+      .quick-grid { grid-template-columns: repeat(2,1fr); }
+      .quick-card:nth-child(2) { border-right: 0; }
+      .quick-card:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .about-grid { gap: 40px; }
+      .appointment-grid { gap: 30px; }
+    }
+
+    @media (max-width: 760px) {
+      .topbar-inner { justify-content: center; text-align: center; }
+      .topbar-inner span:first-child { display: none; }
+      .navbar { height: 72px; }
+      .brand-mark { width: 42px; height: 42px; font-size: 22px; }
+      .brand-name { font-size: 16px; }
+      .brand-sub { font-size: 9px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none; position: absolute; left: 0; right: 0; top: 71px;
+        padding: 15px 5% 22px; background: white; border-bottom: 1px solid var(--line);
+        box-shadow: 0 15px 25px #071b3610; flex-direction: column; align-items: stretch; gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 5px; font-size: 14px; border-bottom: 1px solid #eef2f7; }
+      .hero { padding: 45px 0 35px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy h1 { font-size: clamp(38px, 10vw, 55px); letter-spacing: -1.7px; }
+      .hero-copy > p { font-size: 14px; }
+      .hero-visual { padding: 0 0 20px 12px; margin-top: 5px; }
+      .hero-image { height: 350px; border-radius: 22px 22px 65px 22px; }
+      .image-badge { left: -3px; bottom: 43px; padding: 12px; max-width: 210px; }
+      .hero-caption { right: -3px; top: 12px; }
+      .trust-row { gap: 10px 17px; }
+      .section { padding: 68px 0; }
+      .service-grid, .doctor-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .service-card { padding: 21px; }
+      .service-card h3 { font-size: 16px; }
+      .service-icon { width: 47px; height: 47px; font-size: 22px; }
+      .about-grid, .appointment-grid, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+      .about-image { height: 340px; }
+      .about-note { right: -4px; }
+      .doctor-photo { height: 190px; }
+      .doctor-info { padding: 17px; }
+      .doctor-info h3 { font-size: 15px; }
+      .appointment-copy { padding-top: 0; }
+      .form-card { padding: 24px 19px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .map-panel { min-height: 300px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .footer-about { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 460px) {
+      .container { width: 90%; }
+      .quick-card { padding: 17px 12px; gap: 10px; }
+      .quick-icon { width: 38px; height: 38px; font-size: 19px; }
+      .quick-card h3 { font-size: 11px; }
+      .quick-card p { font-size: 10px; }
+      .service-grid, .doctor-grid { grid-template-columns: 1fr; }
+      .service-card { padding: 24px; }
+      .doctor-photo { height: 230px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .hero-buttons .btn { flex: 1; padding: 12px 13px; font-size: 12px; }
+      .trust-item { font-size: 11px; }
+      .admin-stats { grid-template-columns: 1fr; }
+      .modal-body { padding: 18px; }
+      .modal-head { padding: 18px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-about { grid-column: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top information bar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>Patient-first care. Clear information. Easy enquiries.</span>
+      <span>📍 Najibabad, Uttar Pradesh &nbsp; | &nbsp; <a href="tel:7467080262">☎ 7467080262</a></span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Z.S Hospital home">
+        <div class="brand-mark">Z<span style="color:#64d5ed">.</span>S</div>
+        <div>
+          <div class="brand-name">Z.S HOSPITAL</div>
+          <span class="brand-sub">CARE WITH CONFIDENCE</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#appointment">Appointment</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-primary btn-small" onclick="openAdmin()">Admin Login ↗</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero section -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Your health matters</span>
+          <h1>Better care.<br>Brighter <span>tomorrow.</span></h1>
+          <p>
+            Welcome to Z.S Hospital, Najibabad. Find hospital information,
+            explore available service categories and send an appointment enquiry
+            with ease.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#appointment">Book an Appointment <span>↗</span></a>
+            <a class="btn btn-outline" href="#services">Explore Services <span>→</span></a>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-item"><span class="trust-icon">✓</span> Patient-focused care</div>
+            <div class="trust-item"><span class="trust-icon">♡</span> Care with respect</div>
+            <div class="trust-item"><span class="trust-icon">⌖</span> Najibabad location</div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img class="hero-image"
+               src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1100&q=85"
+               alt="Modern hospital building"
+               onerror="this.style.display='none';this.parentElement.style.background='#dcecff';this.parentElement.style.minHeight='350px'">
+          <div class="hero-caption">Z.S Hospital · Najibabad</div>
+          <div class="image-badge">
+            <div class="image-badge-icon">✚</div>
+            <div>
+              <strong>Your health comes first</strong>
+              <small>Contact us for verified service details</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick access cards -->
+    <div class="quick-wrap">
+      <div class="container">
+        <div class="quick-grid">
+          <a href="#appointment" class="quick-card">
+            <div class="quick-icon">▣</div>
+            <div><h3>Appointment Enquiry</h3><p>Send your request online</p></div>
+          </a>
+          <a href="#services" class="quick-card">
+            <div class="quick-icon">✚</div>
+            <div><h3>Hospital Services</h3><p>Explore service categories</p></div>
+          </a>
+          <a href="#doctors" class="quick-card">
+            <div class="quick-icon">♙</div>
+            <div><h3>Doctor Information</h3><p>View profile placeholders</p></div>
+          </a>
+          <a href="#contact" class="quick-card">
+            <div class="quick-icon">⌖</div>
+            <div><h3>Find Our Location</h3><p>Open map search</p></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <span class="eyebrow">Explore services</span>
+          <h2>Healthcare information, made simple.</h2>
+          <p>Use these sections to explore the types of services you may need. Please contact the hospital to confirm actual availability.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">♡</div>
+            <h3>General Consultation</h3>
+            <p>Enquire about consultations and the appropriate department for your needs.</p>
+            <a href="#appointment" class="text-link">Send an enquiry <span>↗</span></a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">♧</div>
+            <h3>Diagnostic Services</h3>
+            <p>Contact the hospital to verify which diagnostic tests and facilities are available.</p>
+            <a href="#contact" class="text-link">Contact hospital <span>↗</span></a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">✚</div>
+            <h3>Emergency Enquiry</h3>
+            <p>For a medical emergency, call local emergency services or go to the nearest emergency department.</p>
+            <a href="tel:112" class="text-link">Call emergency number <span>↗</span></a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">♧</div>
+            <h3>Women's Healthcare</h3>
+            <p>Ask the hospital directly about women's healthcare services and appointment availability.</p>
+            <a href="#appointment" class="text-link">Make an enquiry <span>↗</span></a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">♙</div>
+            <h3>Child Healthcare</h3>
+            <p>Enquire about paediatric consultations, timings and available specialists.</p>
+            <a href="#appointment" class="text-link">Make an enquiry <span>↗</span></a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">▤</div>
+            <h3>Patient Assistance</h3>
+            <p>Ask about registration, hospital timings, documents and other patient requirements.</p>
+            <a href="#contact" class="text-link">Get contact details <span>↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section-soft" id="about">
+      <div class="container about-grid">
+        <div class="about-image-wrap reveal">
+          <img class="about-image"
+               src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=85"
+               alt="Healthcare professional in a clinical setting"
+               loading="lazy"
+               onerror="this.style.display='none';this.parentElement.style.background='#dcecff';this.parentElement.style.minHeight='300px'">
+          <div class="about-note">
+            <strong>Z.S Hospital</strong>
+            <small>Najibabad, Uttar Pradesh</small>
+          </div>
+        </div>
+
+        <div class="about-copy reveal">
+          <span class="eyebrow">About our hospital</span>
+          <h2>Care starts with listening.</h2>
+          <p>
+            This website is designed to help visitors find contact information,
+            browse service categories and submit appointment enquiries for
+            Z.S Hospital, Najibabad.
+          </p>
+          <div class="check-list">
+            <div class="check-item"><span class="check">✓</span><span>Simple appointment enquiry form</span></div>
+            <div class="check-item"><span class="check">✓</span><span>Quick access to hospital contact information</span></div>
+            <div class="check-item"><span class="check">✓</span><span>Mobile-friendly navigation and layout</span></div>
+            <div class="check-item"><span class="check">✓</span><span>Direct links for calling and WhatsApp enquiries</span></div>
+          </div>
+          <a class="btn btn-primary" href="#appointment">Get in touch ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctor directory -->
+    <section class="section" id="doctors">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Doctor directory</span>
+          <h2>Find the right information.</h2>
+          <p>Doctor names, qualifications, photos and schedules must be added after verification with the hospital.</p>
+        </div>
+
+        <div class="doctor-grid">
+          <article class="doctor-card reveal">
+            <div class="doctor-photo">
+              <div class="doctor-placeholder"><span>♙</span><strong>Doctor Profile</strong><br><small>Add verified doctor photo</small></div>
+            </div>
+            <div class="doctor-info">
+              <span class="doctor-tag">PROFILE TO BE COMPLETED</span>
+              <h3>General Consultation</h3>
+              <p>Doctor name and qualifications to be confirmed.</p>
+              <a href="#appointment" class="btn btn-outline btn-small">Enquire ↗</a>
+            </div>
+          </article>
+
+          <article class="doctor-card reveal">
+            <div class="doctor-photo">
+              <div class="doctor-placeholder"><span>♙</span><strong>Doctor Profile</strong><br><small>Add verified doctor photo</small></div>
+            </div>
+            <div class="doctor-info">
+              <span class="doctor-tag">PROFILE TO BE COMPLETED</span>
+              <h3>Specialist Consultation</h3>
+              <p>Speciality, experience and availability to be confirmed.</p>
+              <a href="#appointment" class="btn btn-outline btn-small">Enquire ↗</a>
+            </div>
+          </article>
+
+          <article class="doctor-card reveal">
+            <div class="doctor-photo">
+              <div class="doctor-placeholder"><span>♙</span><strong>Doctor Profile</strong><br><small>Add verified doctor photo</small></div>
+            </div>
+            <div class="doctor-info">
+              <span class="doctor-tag">PROFILE TO BE COMPLETED</span>
+              <h3>Patient Care</h3>
+              <p>Assigned clinician and consultation timings to be confirmed.</p>
+              <a href="#appointment" class="btn btn-outline btn-small">Enquire ↗</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="doctor-disclaimer">These are placeholder cards, not verified doctor listings. Replace them with confirmed names, qualifications, photos and schedules before publishing.</p>
+      </div>
+    </section>
+
+    <!-- Appointment -->
+    <section class="section appointment-section" id="appointment">
+      <div class="container appointment-grid">
+        <div class="appointment-copy reveal">
+          <span class="eyebrow">Appointment enquiry</span>
+          <h2>Take the first step towards your appointment.</h2>
+          <p>Fill in your contact details and preferred date. This page can save the enquiry in this browser and prepare a WhatsApp message for you to send.</p>
+
+          <div class="appointment-points">
+            <div class="appointment-point"><span>✓</span> Quick enquiry form</div>
+            <div class="appointment-point"><span>↗</span> WhatsApp message option</div>
+            <div class="appointment-point"><span>▣</span> Preferred date selection</div>
+          </div>
+        </div>
+
+        <div class="form-card reveal">
+          <h3>Request an Appointment</h3>
+          <p class="form-subtitle">Fields marked * are required. This is a request, not a confirmed booking.</p>
+
+          <form id="appointmentForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="patientName">Patient name *</label>
+                <input id="patientName" name="patientName" type="text" maxlength="80" placeholder="Enter full name" required>
+              </div>
+
+              <div class="field">
+                <label for="patientPhone">Mobile number *</label>
+                <input id="patientPhone" name="patientPhone" type="tel" inputmode="numeric" pattern="[0-9+\-\s]{10,16}" maxlength="16" placeholder="Your contact number" required>
+              </div>
+
+              <div class="field">
+                <label for="department">Department / enquiry *</label>
+                <select id="department" name="department" required>
+                  <option value="">Select a category</option>
+                  <option>General consultation</option>
+                  <option>Specialist consultation</option>
+                  <option>Diagnostic enquiry</option>
+                  <option>Women's healthcare enquiry</option>
+                  <option>Child healthcare enquiry</option>
+                  <option>Other enquiry</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="appointmentDate">Preferred date *</label>
+                <input id="appointmentDate" name="appointmentDate" type="date" required>
+              </div>
+
+              <div class="field full">
+                <label for="patientMessage">Additional message (optional)</label>
+                <textarea id="patientMessage" name="patientMessage" maxlength="500" placeholder="Enter a brief, non-sensitive enquiry. Please don't include medical records or sensitive health details."></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Enquiry & Continue to WhatsApp ↗</button>
+            <div class="notice" id="formNotice" role="status"></div>
+            <p class="privacy-note">This demo stores the submitted details in this browser's local storage. It is not a secure patient-record system. WhatsApp opens only after you submit; you must send the message yourself.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="section section-soft" id="faq">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <span class="eyebrow">Helpful information</span>
+          <h2>Frequently asked questions.</h2>
+          <p>For current timings, fees, doctor availability and services, please contact the hospital directly.</p>
+        </div>
+
+        <div class="faq-grid">
+          <details class="faq-item reveal">
+            <summary>How do I request an appointment?</summary>
+            <p>Complete the enquiry form on this page. It saves a local demo record and prepares a WhatsApp message. An appointment is not confirmed until the hospital confirms it.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Are all listed services available?</summary>
+            <p>Service cards are informational placeholders. Please contact the hospital to verify actual services, facilities and operating hours.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Can I use the website on a mobile?</summary>
+            <p>Yes. The layout adapts to mobile phones, tablets, laptops and desktop screens.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Does the admin panel work across devices?</summary>
+            <p>No. This single-file demo uses local browser storage. A secure shared database and server-side login are required for multiple devices.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Contact us</span>
+          <h2>Let's help you find your way.</h2>
+          <p>Use the contact details below to make an enquiry or open a map search for the hospital.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <h3>Get in touch</h3>
+            <p>For confirmed hospital information, appointment availability and timings, contact the hospital directly.</p>
+
+            <div class="contact-line">
+              <span>⌖</span>
+              <div><strong>Location</strong><p>Z.S Hospital, Najibabad, Uttar Pradesh, India</p></div>
+            </div>
+            <div class="contact-line">
+              <span>☎</span>
+              <div><strong>Phone</strong><a href="tel:7467080262">7467080262</a></div>
+            </div>
+            <div class="contact-line">
+              <span>◉</span>
+              <div><strong>WhatsApp</strong><a href="https://wa.me/917467080262" target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a></div>
+            </div>
+            <div class="contact-line">
+              <span>◷</span>
+              <div><strong>Hospital timings</strong><p>Please confirm directly with the hospital.</p></div>
+            </div>
+          </div>
+
+          <div class="map-panel reveal">
+            <div class="map-symbol">⌖</div>
+            <h3>Find Z.S Hospital</h3>
+            <p>Open a map search for Z.S Hospital in Najibabad. Verify the exact pin and address before travelling.</p>
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Z.S+Hospital+Najibabad+Uttar+Pradesh" target="_blank" rel="noopener noreferrer">Open Google Maps ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="#home">
+            <div class="brand-mark">Z<span style="color:#64d5ed">.</span>S</div>
+            <div>
+              <div class="brand-name">Z.S HOSPITAL</div>
+              <span class="brand-sub">CARE WITH CONFIDENCE</span>
+            </div>
+          </a>
+          <p>A responsive hospital information website for Z.S Hospital, Najibabad. Confirm all clinical, operational and contact details before publishing.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#doctors">Doctors</a>
+          <a href="#appointment">Appointment</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:7467080262">Call: 7467080262</a>
+          <a href="https://wa.me/917467080262" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href="#contact">Najibabad, Uttar Pradesh</a>
+          <a href="#" onclick="openAdmin();return false;">Admin demo</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> <strong>Z.S Hospital</strong>. Website template.</span>
+        <span>For emergencies in India, call <strong>112</strong> or seek immediate medical assistance.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating shortcut -->
+  <a class="whatsapp-float" href="https://wa.me/917467080262" target="_blank" rel="noopener noreferrer" aria-label="Contact Z.S Hospital on WhatsApp">◉</a>
+
+  <!-- Admin demo modal -->
+  <div class="modal-backdrop" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="adminTitle">Z.S Hospital · Admin Demo</h3>
+        <button class="modal-close" onclick="closeAdmin()" aria-label="Close admin panel">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="admin-warning">
+          <strong>Demo only — not secure for real patient data.</strong>
+          This login and local storage run in the browser. They do not provide server-side authentication, access control or shared records. Do not store real patient or medical information here.
+        </div>
+
+        <div id="adminLogin" class="admin-login">
+          <span class="demo-label">LOCAL DEMO LOGIN</span>
+          <h4>Welcome back.</h4>
+          <p>Use the sample credentials below to explore the demo dashboard.</p>
+
+          <form id="adminLoginForm">
+            <div class="field">
+              <label for="adminUsername">Username</label>
+              <input id="adminUsername" type="text" autocomplete="username" required value="admin">
+            </div>
+            <div class="field">
+              <label for="adminPassword">Demo password</label>
+              <input id="adminPassword" type="password" autocomplete="current-password" required>
+            </div>
+            <p class="privacy-note">Demo username: <strong>admin</strong> · Demo password: <strong>demo1234</strong></p>
+            <button class="btn btn-primary" type="submit" style="width:100%;margin-top:18px">Open Demo Dashboard →</button>
+            <p class="admin-error" id="adminError" role="alert">Login details are incorrect. Try the displayed demo credentials.</p>
+          </form>
+        </div>
+
+        <div class="admin-dashboard" id="adminDashboard">
+          <span class="demo-label">LOCAL BROWSER DASHBOARD</span>
+          <h4 style="font-size:23px;color:var(--navy);margin-bottom:8px">Appointment enquiries</h4>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:20px">These are records saved in this browser only.</p>
+
+          <div class="admin-stats">
+            <div class="admin-stat"><small>Total enquiries</small><strong id="totalCount">0</strong></div>
+            <div class="admin-stat"><small>Today's entries</small><strong id="todayCount">0</strong></div>
+            <div class="admin-stat"><small>Storage</small><strong style="font-size:17px;margin-top:6px">This device</strong></div>
+          </div>
+
+          <div id="adminRecords"></div>
+
+          <div class="admin-actions">
+            <button class="btn btn-outline btn-small" onclick="exportRecords()">Export CSV ↓</button>
+            <button class="btn danger btn-small" onclick="clearRecords()">Clear demo records</button>
+            <button class="btn btn-primary btn-small" onclick="adminLogout()">Log out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    "use strict";
+
+    // ---------------------------------------------------------
+    // Z.S Hospital single-file website
+    // Appointment records are stored locally in this browser.
+    // Do not use this demo to store real patient medical records.
+    // ---------------------------------------------------------
+
+    const WHATSAPP_NUMBER = "917467080262";
+    const STORAGE_KEY = "zsHospitalDemoAppointments_v1";
+    const DEMO_USERNAME = "admin";
+    const DEMO_PASSWORD = "demo1234";
+
+    const $ = (id) => document.getElementById(id);
+
+    $("year").textContent = new Date().getFullYear();
+
+    // Mobile navigation
+    $("menuToggle").addEventListener("click", () => {
+      const links = $("navLinks");
+      const isOpen = links.classList.toggle("open");
+      $("menuToggle").setAttribute("aria-expanded", String(isOpen));
+      $("menuToggle").textContent = isOpen ? "×" : "☰";
+    });
+
+    document.querySelectorAll("#navLinks a").forEach(link => {
+      link.addEventListener("click", () => {
+        $("navLinks").classList.remove("open");
+        $("menuToggle").setAttribute("aria-expanded", "false");
+        $("menuToggle").textContent = "☰";
+      });
+    });
+
+    // Reveal animations; content remains visible if observer is unsupported.
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+    }
+
+    // Date picker: prevent selecting a date in the past.
+    const dateInput = $("appointmentDate");
+    const now = new Date();
+    const localToday = [
+      now.getFullYear(),
+      String(now.getMonth() + 1).padStart(2, "0"),
+      String(now.getDate()).padStart(2, "0")
+    ].join("-");
+    dateInput.min = localToday;
+
+    function readAppointments() {
+      try {
+        const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        return Array.isArray(value) ? value : [];
+      } catch (error) {
+        console.error("Could not read local demo records.", error);
+        return [];
+      }
+    }
+
+    function writeAppointments(records) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+        return true;
+      } catch (error) {
+        console.error("Could not save local demo records.", error);
+        return false;
+      }
+    }
+
+    function safeText(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
+
+    function showNotice(message) {
+      const notice = $("formNotice");
+      notice.textContent = message;
+      notice.classList.add("show");
+    }
+
+    // Appointment enquiry form
+    $("appointmentForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (!this.reportValidity()) return;
+
+      const patientName = $("patientName").value.trim();
+      const patientPhone = $("patientPhone").value.trim();
+      const department = $("department").value;
+      const appointmentDate = $("appointmentDate").value;
+      const patientMessage = $("patientMessage").value.trim();
+
+      if (appointmentDate < localToday) {
+        showNotice("Please choose today or a future date.");
+        return;
+      }
+
+      const record = {
+        id: (window.crypto && crypto.randomUUID)
+          ? crypto.randomUUID()
+          : String(Date.now()) + Math.random().toString(16).slice(2),
+        patientName,
+        patientPhone,
+        department,
+        appointmentDate,
+        patientMessage,
+        createdAt: new Date().toISOString()
+      };
+
+      const records = readAppointments();
+      records.unshift(record);
+      const saved = writeAppointments(records);
+
+      if (saved) {
+        showNotice("Your enquiry was saved in this browser. WhatsApp will open next; send the message to contact the hospital.");
+      } else {
+        showNotice("The enquiry could not be saved in this browser. You can still continue to WhatsApp.");
+      }
+
+      const message = [
+        "Appointment Enquiry — Z.S Hospital, Najibabad",
+        "",
+        "Patient name: " + patientName,
+        "Contact number: " + patientPhone,
+        "Enquiry category: " + department,
+        "Preferred date: " + appointmentDate,
+        patientMessage ? "Message: " + patientMessage : "",
+        "",
+        "Please confirm availability and appointment details."
+      ].filter(Boolean).join("\n");
+
+      const waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+      const opened = window.open(waUrl, "_blank", "noopener,noreferrer");
+
+      // If the browser blocks a new tab, provide a clickable fallback.
+      if (!opened) {
+        const fallback = document.createElement("p");
+        fallback.style.marginTop = "10px";
+        const link = document.createElement("a");
+        link.href = waUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.className = "text-link";
+        link.textContent = "Click here to open WhatsApp ↗";
+        fallback.appendChild(link);
+        $("formNotice").appendChild(document.createElement("br"));
+        $("formNotice").appendChild(fallback);
+      }
+
+      if (saved) {
+        this.reset();
+        dateInput.min = localToday;
+      }
+    });
+
+    // Admin demo modal
+    let isAdminLoggedIn = false;
+
+    function openAdmin() {
+      $("adminModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+
+      if (!isAdminLoggedIn) {
+        $("adminLogin").style.display = "block";
+        $("adminDashboard").style.display = "none";
+        $("adminPassword").value = "";
+        $("adminError").classList.remove("show");
+      } else {
+        renderAdminRecords();
+      }
+    }
+
+    function closeAdmin() {
+      $("adminModal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    $("adminModal").addEventListener("click", event => {
+      if (event.target === $("adminModal")) closeAdmin();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeAdmin();
+    });
+
+    $("adminLoginForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      const username = $("adminUsername").value.trim();
+      const password = $("adminPassword").value;
+
+      // This is a public, client-side demonstration—not real authentication.
+      if (username === DEMO_USERNAME && password === DEMO_PASSWORD) {
+        isAdminLoggedIn = true;
+        $("adminLogin").style.display = "none";
+        $("adminDashboard").style.display = "block";
+        $("adminError").classList.remove("show");
+        renderAdminRecords();
+      } else {
+        $("adminError").classList.add("show");
+      }
+    });
+
+    function adminLogout() {
+      isAdminLoggedIn = false;
+      $("adminDashboard").style.display = "none";
+      $("adminLogin").style.display = "block";
+      $("adminPassword").value = "";
+    }
+
+    function renderAdminRecords() {
+      if (!isAdminLoggedIn) return;
+
+      const records = readAppointments();
+      const today = new Date().toISOString().slice(0, 10);
+
+      $("totalCount").textContent = records.length;
+      $("todayCount").textContent = records.filter(r =>
+        String(r.createdAt || "").slice(0, 10) === today
+      ).length;
+
+      const holder = $("adminRecords");
+
+      if (!records.length) {
+        holder.innerHTML = '<p class="admin-empty">No local demo enquiries yet. Submit the appointment form to create a sample entry.</p>';
+        return;
+      }
+
+      // All user-supplied values are escaped before rendering.
+      holder.innerHTML = `
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Contact</th>
+                <th>Category</th>
+                <th>Preferred date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${records.map(record => `
+                <tr>
+                  <td>
+                    <strong>${safeText(record.patientName)}</strong>
+                    <div style="color:#64748b;margin-top:4px">${safeText(record.patientMessage || "")}</div>
+                  </td>
+                  <td>${safeText(record.patientPhone)}</td>
+                  <td>${safeText(record.department)}</td>
+                  <td>${safeText(record.appointmentDate)}</td>
+                  <td>
+                    <button class="btn danger btn-small" onclick="deleteRecord('${safeText(record.id)}')">Delete</button>
+                  </td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>`;
+    }
+
+    function deleteRecord(id) {
+      if (!isAdminLoggedIn) return;
+      if (!confirm("Delete this local demo enquiry?")) return;
+
+      const records = readAppointments().filter(record => record.id !== id);
+      writeAppointments(records);
+      renderAdminRecords();
+    }
+
+    function clearRecords() {
+      if (!isAdminLoggedIn) return;
+      if (!confirm("Delete ALL appointment records saved in this browser? This cannot be undone.")) return;
+
+      writeAppointments([]);
+      renderAdminRecords();
+    }
+
+    function exportRecords() {
+      if (!isAdminLoggedIn) return;
+
+      const records = readAppointments();
+
+      if (!records.length) {
+        alert("There are no local demo records to export.");
+        return;
+      }
+
+      const columns = [
+        "Patient name",
+        "Contact number",
+        "Category",
+        "Preferred date",
+        "Message",
+        "Created at"
+      ];
+
+      const rows = records.map(record => [
+        record.patientName,
+        record.patientPhone,
+        record.department,
+        record.appointmentDate,
+        record.patientMessage,
+        record.createdAt
+      ]);
+
+      const csvCell = value =>
+        '"' + String(value ?? "").replace(/"/g, '""') + '"';
+
+      const csv = [columns, ...rows]
+        .map(row => row.map(csvCell).join(","))
+        .join("\r\n");
+
+      const blob = new Blob(["\uFEFF" + csv], {
+        type: "text/csv;charset=utf-8;"
+      });
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "zs-hospital-demo-enquiries.csv";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    // Make modal functions available to the HTML buttons.
+    window.openAdmin = openAdmin;
+    window.closeAdmin = closeAdmin;
+    window.adminLogout = adminLogout;
+    window.deleteRecord = deleteRecord;
+    window.clearRecords = clearRecords;
+    window.exportRecords = exportRecords;
+  </script>
+</body>
+</html>
